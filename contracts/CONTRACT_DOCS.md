@@ -1,46 +1,47 @@
+````markdown
 # 📋 VotingContract - Technical Documentation
 
 ## 📖 Overview
 
-`VotingContract` es un contrato inteligente desarrollado en Solidity 0.8.19 que implementa un sistema de votaciones transparente y seguro en la blockchain. Utiliza OpenZeppelin para funcionalidades de seguridad y acceso.
+`VotingContract` is a smart contract developed in Solidity 0.8.19 that implements a transparent and secure voting system on the blockchain. It uses OpenZeppelin for security and access functionalities.
 
 ## 🏗️ Architecture
 
 ### Inheritance
-- `Ownable`: Control de acceso para funciones administrativas
-- `ReentrancyGuard`: Protección contra ataques de reentrancia
+- `Ownable`: Access control for administrative functions
+- `ReentrancyGuard`: Protection against reentrancy attacks
 
 ### Key Features
-- ✅ **Elecciones temporales**: Con períodos definidos para candidaturas y votación
-- ✅ **Sistema de candidatos**: Registro y aprobación de candidatos
-- ✅ **Votación anónima**: Usando hashes únicos por voto
-- ✅ **Prevención de doble voto**: Por dirección y por hash
-- ✅ **Contadores automáticos**: Para elecciones y candidatos
+- ✅ **Temporal elections**: With defined periods for candidacies and voting
+- ✅ **Candidate system**: Registration and approval of candidates
+- ✅ **Anonymous voting**: Using unique hashes per vote
+- ✅ **Double vote prevention**: By address and by hash
+- ✅ **Automatic counters**: For elections and candidates
 
 ## 📊 Data Structures
 
 ### Election Struct
 ```solidity
 struct Election {
-    uint256 id;           // ID único de la elección
-    string title;         // Título de la elección
-    uint256 startTime;    // Timestamp de inicio de votación
-    uint256 candidacyEnd; // Timestamp de fin de candidaturas
-    uint256 endTime;      // Timestamp de fin de votación
-    address creator;      // Dirección del creador
-    bool exists;          // Flag de existencia
+    uint256 id;           // Unique election ID
+    string title;         // Election title
+    uint256 startTime;    // Voting start timestamp
+    uint256 candidacyEnd; // Candidacy end timestamp
+    uint256 endTime;      // Voting end timestamp
+    address creator;      // Creator address
+    bool exists;          // Existence flag
 }
 ```
 
 ### Candidate Struct
 ```solidity
 struct Candidate {
-    uint256 id;          // ID único del candidato
-    uint256 electionId;  // ID de la elección
-    string name;         // Nombre del candidato
-    uint256 votes;       // Número de votos recibidos
-    bool approved;       // Estado de aprobación
-    bool exists;         // Flag de existencia
+    uint256 id;          // Unique candidate ID
+    uint256 electionId;  // Election ID
+    string name;         // Candidate name
+    uint256 votes;       // Number of votes received
+    bool approved;       // Approval status
+    bool exists;         // Existence flag
 }
 ```
 
@@ -50,56 +51,56 @@ struct Candidate {
 
 #### `createElection(string title, uint256 startTime, uint256 candidacyEnd, uint256 endTime)`
 - **Access**: Public
-- **Purpose**: Crear una nueva elección
+- **Purpose**: Create a new election
 - **Validations**:
-  - Start time debe ser futuro
-  - Candidacy end debe ser antes del start time
-  - End time debe ser después del start time
+  - Start time must be future
+  - Candidacy end must be before start time
+  - End time must be after start time
 - **Events**: `ElectionCreated`
 
 #### `approveCandidate(uint256 electionId, uint256 candidateId, string candidateName)`
 - **Access**: Only election creator
-- **Purpose**: Aprobar un candidato para participar
+- **Purpose**: Approve a candidate to participate
 - **Validations**:
-  - Solo el creador de la elección puede aprobar
-  - Candidato debe existir
-  - Período de candidaturas debe estar activo
+  - Only election creator can approve
+  - Candidate must exist
+  - Candidacy period must be active
 - **Events**: `CandidateApproved`
 
 ### Public Functions
 
 #### `registerCandidate(uint256 electionId)`
 - **Access**: Public
-- **Purpose**: Registrar un candidato (pre-aprobación)
-- **Returns**: ID del candidato creado
+- **Purpose**: Register a candidate (pre-approval)
+- **Returns**: ID of created candidate
 - **Validations**:
-  - Elección debe existir
-  - Período de candidaturas debe estar activo
+  - Election must exist
+  - Candidacy period must be active
 
 #### `vote(uint256 electionId, uint256 candidateId, string voteHash)`
-- **Access**: Public (con ReentrancyGuard)
-- **Purpose**: Emitir un voto
+- **Access**: Public (with ReentrancyGuard)
+- **Purpose**: Cast a vote
 - **Validations**:
-  - Período de votación debe estar activo
-  - Candidato debe estar aprobado
-  - Usuario no debe haber votado antes
-  - Hash de voto debe ser único
+  - Voting period must be active
+  - Candidate must be approved
+  - User must not have voted before
+  - Vote hash must be unique
 - **Events**: `VoteCast`
 
 ### View Functions
 
 #### Election Queries
-- `getElection(uint256 electionId)`: Información completa de elección
-- `getTotalElections()`: Total de elecciones creadas
-- `getElectionCandidates(uint256 electionId)`: Lista de candidatos de una elección
+- `getElection(uint256 electionId)`: Complete election information
+- `getTotalElections()`: Total elections created
+- `getElectionCandidates(uint256 electionId)`: List of election candidates
 
 #### Candidate Queries
-- `getCandidate(uint256 candidateId)`: Información completa del candidato
-- `getTotalCandidates()`: Total de candidatos registrados
+- `getCandidate(uint256 candidateId)`: Complete candidate information
+- `getTotalCandidates()`: Total candidates registered
 
 #### Vote Queries
-- `hasUserVoted(address voter, uint256 electionId)`: Verificar si usuario votó
-- `isVoteHashUsed(string voteHash)`: Verificar si hash fue usado
+- `hasUserVoted(address voter, uint256 electionId)`: Check if user voted
+- `isVoteHashUsed(string voteHash)`: Check if hash was used
 
 ## 📡 Events
 
@@ -136,48 +137,48 @@ event VoteCast(
 ## 🔐 Security Features
 
 ### Access Control
-- **Election Creation**: Público (cualquiera puede crear elecciones)
-- **Candidate Approval**: Solo creador de la elección
-- **Voting**: Público durante período válido
+- **Election Creation**: Public (anyone can create elections)
+- **Candidate Approval**: Only election creator
+- **Voting**: Public during valid period
 
 ### Anti-Fraud Mechanisms
 - **Double Voting Prevention**: Mapping `hasVoted[voter][electionId]`
 - **Hash Uniqueness**: Mapping `usedVoteHashes[hash]`
-- **Time Validation**: Validación de períodos de candidatura y votación
-- **Reentrancy Protection**: Modifier en función `vote`
+- **Time Validation**: Validation of candidacy and voting periods
+- **Reentrancy Protection**: Modifier on `vote` function
 
 ### Data Integrity  
-- **Immutable Votes**: Los votos no pueden ser modificados una vez emitidos
-- **Transparent Counting**: Contadores públicos y verificables
-- **Event Logging**: Todos los eventos críticos son logeados
+- **Immutable Votes**: Votes cannot be modified once cast
+- **Transparent Counting**: Public and verifiable counters
+- **Event Logging**: All critical events are logged
 
 ## ⚡ Gas Optimization
 
 ### Efficient Storage
-- Uso de `mapping` para acceso O(1)
-- `Counters` de OpenZeppelin para IDs seguros
-- Structs optimizados para slots de storage
+- Use of `mapping` for O(1) access
+- OpenZeppelin `Counters` for secure IDs
+- Optimized structs for storage slots
 
 ### Batch Operations
-- Los arrays de candidatos se construyen dinámicamente
-- Mínimo número de operaciones de storage por transacción
+- Candidate arrays are built dynamically
+- Minimum number of storage operations per transaction
 
 ## 🧪 Testing Coverage
 
 ### Test Categories
 1. **Election Creation**
-   - Validación de parámetros temporales
-   - Permisos de creación
+   - Temporal parameter validation
+   - Creation permissions
    
 2. **Candidate Management**
-   - Registro de candidatos
-   - Proceso de aprobación
-   - Validaciones de permisos
+   - Candidate registration
+   - Approval process
+   - Permission validations
    
 3. **Voting Process**
-   - Emisión de votos válidos
-   - Prevención de doble voto
-   - Validación de hashes únicos
+   - Valid vote casting
+   - Double vote prevention
+   - Unique hash validation
 
 ### Test Results
 ```
@@ -198,19 +199,19 @@ event VoteCast(
 ### Network Compatibility
 - ✅ Polygon Mainnet (Chain ID: 137)
 - ✅ Polygon Amoy (Chain ID: 80002)
-- ✅ Ethereum (con ajustes de gas)
+- ✅ Ethereum (with gas adjustments)
 
 ## 🔗 Integration
 
 ### Frontend Integration
-- ABI disponible en `contracts/abi.json`
-- Eventos indexados para queries eficientes
-- View functions para estado sin gas
+- ABI available in `contracts/abi.json`
+- Indexed events for efficient queries
+- View functions for gasless state queries
 
 ### Backend Integration
-- Compatible con viem, ethers.js, web3.js
-- Event polling para sincronización en tiempo real
-- Estructuras tipadas para TypeScript
+- Compatible with viem, ethers.js, web3.js
+- Event polling for real-time synchronization
+- Typed structures for TypeScript
 
 ## 🚀 Deployment Instructions
 
@@ -233,16 +234,17 @@ event VoteCast(
 ## ⚠️ Important Notes
 
 ### Security Considerations
-- **Private Keys**: Nunca commitear claves privadas
-- **Gas Limits**: Monitorear límites en transacciones complejas
-- **Network Fees**: Considerar costos en mainnet vs testnet
+- **Private Keys**: Never commit private keys
+- **Gas Limits**: Monitor limits in complex transactions
+- **Network Fees**: Consider costs on mainnet vs testnet
 
 ### Operational Considerations
-- **Time Zones**: Todos los timestamps son UTC
-- **Vote Privacy**: Los hashes no deben ser reversibles
-- **Scalability**: Considerar límites de gas para elecciones grandes
+- **Time Zones**: All timestamps are UTC
+- **Vote Privacy**: Hashes must not be reversible
+- **Scalability**: Consider gas limits for large elections
 
 ---
 
 **🎯 Status: Production Ready**  
-Contrato auditado, testeado y listo para despliegue en producción.
+Contract audited, tested and ready for production deployment.
+````
