@@ -32,17 +32,24 @@ export default function LoginPage({ isOpen, onClose, onLogin, defaultToRegister 
 
   const handleLogin = (e) => {
     e.preventDefault()
-    // Simulación de login de admin
-    if (formData.username === "admin" && formData.password === "admin") {
+    if (formData.username === "developer" && formData.password === "dev") {
+      if (onLogin) onLogin("developer")
+      onClose()
+      alert("Bienvenido Developer - Modo de desarrollo activado")
+    } else if (formData.username === "propietario" && formData.password === "prop123") {
+      if (onLogin) onLogin("propietario")
+      onClose()
+      alert("Bienvenido Propietario")
+    } else if (formData.username === "admin" && formData.password === "admin123") {
       setIsAdmin(true)
-      if (onLogin) onLogin("owner")
+      if (onLogin) onLogin("administrador")
       onClose()
       alert("Bienvenido Administrador")
-    } else if (formData.username === "votante" && formData.password === "123") {
+    } else if (formData.username === "votante" && formData.password === "vot123") {
       if (onLogin) onLogin("votante")
       onClose()
       alert("Bienvenido Votante")
-    } else if (formData.username === "candidato" && formData.password === "123") {
+    } else if (formData.username === "candidato" && formData.password === "can123") {
       if (onLogin) onLogin("candidato")
       onClose()
       alert("Bienvenido Candidato")
@@ -161,6 +168,7 @@ export default function LoginPage({ isOpen, onClose, onLogin, defaultToRegister 
                     <SelectItem value="votante">Votante</SelectItem>
                     <SelectItem value="candidato">Candidato</SelectItem>
                     <SelectItem value="propietario">Propietario</SelectItem>
+                    <SelectItem value="administrador">Administrador</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
