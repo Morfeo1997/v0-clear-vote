@@ -3,10 +3,10 @@
 import { useState } from "react"
 import Navbar from "@/components/navbar"
 import LandingSection from "@/components/landing-section"
-import Home from "@/components/home"
-import LoginForm from "@/components/login-form"
+import HomePage from "@/pages/home"
+import LoginPage from "@/pages/login"
 
-export default function HomePage() {
+export default function MainPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userType, setUserType] = useState(null) // 'owner', 'votante', 'candidato'
   const [showRegister, setShowRegister] = useState(false)
@@ -37,14 +37,14 @@ export default function HomePage() {
 
       {isAuthenticated ? (
         <div className="pt-16">
-          <Home userType={userType} onShowRegister={handleShowRegister} />
+          <HomePage userType={userType} onShowRegister={handleShowRegister} />
         </div>
       ) : (
         <LandingSection />
       )}
 
       {showRegister && (
-        <LoginForm isOpen={showRegister} onClose={() => setShowRegister(false)} defaultToRegister={true} />
+        <LoginPage isOpen={showRegister} onClose={() => setShowRegister(false)} defaultToRegister={true} />
       )}
     </div>
   )

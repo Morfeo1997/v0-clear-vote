@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import LoginForm from "@/components/login-form"
+import LoginPage from "@/pages/login"
 
 export default function Navbar({ userType, isAuthenticated, onLogout, onShowRegister }) {
   const [isLoginOpen, setIsLoginOpen] = useState(false)
@@ -63,7 +63,7 @@ export default function Navbar({ userType, isAuthenticated, onLogout, onShowRegi
         </div>
       </nav>
 
-      <LoginForm isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      <LoginPage isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </>
   )
 }

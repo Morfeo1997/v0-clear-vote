@@ -4,9 +4,9 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Plus, Vote } from "lucide-react"
-import ElectionCard from "./election-card"
+import ElectionCard from "@/components/home-components/election-card"
 
-export default function Home({ userType, onShowRegister }) {
+export default function HomePage({ userType, onShowRegister }) {
   const [elections] = useState([
     {
       id: 1,
