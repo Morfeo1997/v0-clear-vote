@@ -232,10 +232,10 @@ npm run deploy:amoy
 
 ## 📚 Documentation
 
-- 📖 **[Technical Documentation](./contracts/CONTRACT_DOCS.md)** - Smart contract details
-- 🚀 **[Deployment Guide](./DEPLOYMENT.md)** - Step-by-step deployment
-- 🔧 **[API Reference](./README_blockchain.md)** - Backend integration guide
-- ✅ **[Final Report](./FINAL_CHECKLIST.md)** - Project completion status
+- 📖 **[Smart Contract Documentation](./contracts/CONTRACT_DOCS.md)** - Detailed smart contract specifications
+- � **[Smart Contracts Overview](./contracts/README.md)** - Contract deployment and testing info
+- ⚡ **[Edge Functions Guide](./supabase/functions/README.md)** - Backend API and serverless functions
+- 🚀 **[Getting Started](#-getting-started)** - Quick setup and deployment guide
 
 ---
 
