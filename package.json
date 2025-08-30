@@ -1,0 +1,31 @@
+{
+  "name": "blockchain-elections",
+  "version": "1.0.0",
+  "description": "Sistema completo de elecciones transparentes usando **Supabase Edge Functions**, **Polygon** y **viem**.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:amoy": "hardhat run scripts/deploy.js --network amoy",
+    "deploy:polygon": "hardhat run scripts/deploy.js --network polygon",
+    "verify:amoy": "hardhat run scripts/verify-deployment.js --network amoy",
+    "verify:polygon": "hardhat run scripts/verify-deployment.js --network polygon",
+    "test:integration": "hardhat run scripts/test-contract-integration.js --network amoy",
+    "test:full": "hardhat run scripts/test-full-integration.js --network amoy",
+    "test:real": "hardhat run scripts/test-real-network.js --network amoy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^4.9.0",
+    "chai": "^4.3.7",
+    "dotenv": "^17.2.1",
+    "ethereum-waffle": "^4.0.10",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.19.0",
+    "mocha": "^10.2.0"
+  }
+}
