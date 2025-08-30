@@ -21,11 +21,22 @@
     "@nomiclabs/hardhat-ethers": "^2.2.3",
     "@nomiclabs/hardhat-waffle": "^2.0.6",
     "@openzeppelin/contracts": "^4.9.0",
+    "@alchemy/aa-accounts": "^3.19.0",
+    "@alchemy/aa-alchemy": "^3.19.0",
+    "@alchemy/aa-core": "^3.19.0",
     "chai": "^4.3.7",
     "dotenv": "^17.2.1",
     "ethereum-waffle": "^4.0.10",
     "ethers": "^5.7.2",
     "hardhat": "^2.19.0",
     "mocha": "^10.2.0"
+  },
+  "dependencies": {
+    "@account-kit/react": "^4.0.0",
+    "@account-kit/signer": "^4.0.0",
+    "crypto-js": "^4.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "node-rsa": "^1.1.1",
+    "viem": "^2.36.0"
   }
 }
