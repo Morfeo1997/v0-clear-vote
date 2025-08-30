@@ -19,10 +19,10 @@ The main smart contract implementing the complete election system on the blockch
 Application Binary Interface (ABI) for the VotingContract, required for frontend integration.
 
 **Usage:**
-```javascript
+\`\`\`javascript
 import contractABI from './contracts/abi.json';
 // Use with viem, ethers.js, or web3.js
-```
+\`\`\`
 
 ### **CONTRACT_DOCS.md**
 Complete technical documentation for the VotingContract including:
