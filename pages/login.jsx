@@ -6,6 +6,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Wallet, User } from "lucide-react"
+import SmartWalletLogin from "@/components/smart-wallet/SmartWalletLogin"
 
 export default function LoginPage({ isOpen, onClose, onLogin, defaultToRegister = false }) {
   const [isLogin, setIsLogin] = useState(!defaultToRegister)
@@ -77,47 +80,71 @@ export default function LoginPage({ isOpen, onClose, onLogin, defaultToRegister 
           <CardTitle className="text-2xl font-bold text-primary">
             {isLogin ? "Iniciar Sesión" : "Registro de Usuario"}
           </CardTitle>
-          <CardDescription>{isLogin ? "Accede a tu cuenta de votación" : "Crea una nueva cuenta"}</CardDescription>
+          <CardDescription>
+            {isLogin ? "Accede a tu cuenta de votación" : "Crea una nueva cuenta"}
+          </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-4">
           {isLogin ? (
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="username">Nombre de usuario</Label>
-                <Input
-                  id="username"
-                  type="text"
-                  value={formData.username}
-                  onChange={(e) => handleInputChange("username", e.target.value)}
-                  required
+            <Tabs defaultValue="traditional" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="traditional" className="flex items-center gap-2">
+                  <User className="h-4 w-4" />
+                  Tradicional
+                </TabsTrigger>
+                <TabsTrigger value="smart-wallet" className="flex items-center gap-2">
+                  <Wallet className="h-4 w-4" />
+                  Smart Wallet
+                </TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="traditional" className="space-y-4 mt-4">
+                <form onSubmit={handleLogin} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="username">Nombre de usuario</Label>
+                    <Input
+                      id="username"
+                      type="text"
+                      value={formData.username}
+                      onChange={(e) => handleInputChange("username", e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="password">Contraseña</Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      value={formData.password}
+                      onChange={(e) => handleInputChange("password", e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <Button type="submit" className="w-full">
+                    Iniciar Sesión
+                  </Button>
+
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      className="text-sm text-primary hover:underline"
+                      onClick={() => alert("Funcionalidad en desarrollo")}
+                    >
+                      ¿Olvidaste tu contraseña?
+                    </button>
+                  </div>
+                </form>
+              </TabsContent>
+
+              <TabsContent value="smart-wallet" className="mt-4">
+                <SmartWalletLogin 
+                  onLogin={onLogin}
+                  onClose={onClose}
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="password">Contraseña</Label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={formData.password}
-                  onChange={(e) => handleInputChange("password", e.target.value)}
-                  required
-                />
-              </div>
-
-              <Button type="submit" className="w-full">
-                Iniciar Sesión
-              </Button>
-
-              <div className="text-center">
-                <button
-                  type="button"
-                  className="text-sm text-primary hover:underline"
-                  onClick={() => alert("Funcionalidad en desarrollo")}
-                >
-                  ¿Olvidaste tu contraseña?
-                </button>
-              </div>
+              </TabsContent>
 
               {isAdmin && (
                 <div className="pt-4 border-t">
@@ -131,7 +158,7 @@ export default function LoginPage({ isOpen, onClose, onLogin, defaultToRegister 
                   </Button>
                 </div>
               )}
-            </form>
+            </Tabs>
           ) : (
             <form onSubmit={handleRegister} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">

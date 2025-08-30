@@ -33,4 +33,5 @@ logs/
 
 # Temporary files
 .temp/
-temp/
+temp/keys/
+keys/*
