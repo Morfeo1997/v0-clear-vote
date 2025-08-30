@@ -55,17 +55,17 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 ## 🏗️ Technical Architecture
 
 ### **Blockchain Layer (Polygon)**
-```
+\`\`\`
 🔗 Smart Contract (Solidity 0.8.19)
 ├── Election Management
 ├── Candidate Registration & Approval
 ├── Anonymous Vote Casting
 ├── Real-time Vote Counting
 └── Fraud Prevention Systems
-```
+\`\`\`
 
 ### **Backend Layer (Supabase)**
-```
+\`\`\`
 ⚡ Edge Functions (TypeScript/Deno)
 ├── User Authentication & Authorization
 ├── Election Creation & Management
@@ -73,17 +73,17 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 ├── Vote Submission & Verification
 ├── Results Aggregation & Display
 └── Blockchain Event Synchronization
-```
+\`\`\`
 
 ### **Database Layer (PostgreSQL)**
-```
+\`\`\`
 🗄️ Supabase Database with Row Level Security
 ├── User Management & Profiles
 ├── Election & Campaign Information
 ├── Candidate Applications & Approvals
 ├── Voter Registration & Verification
 └── Audit Logs & Analytics
-```
+\`\`\`
 
 ---
 
@@ -170,11 +170,11 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 ## 🔬 Technical Innovation Highlights
 
 ### **Anonymous Voting Algorithm**
-```
+\`\`\`
 User Vote → Cryptographic Hash → Blockchain Storage
      ↓              ↓                    ↓
 Identity Hidden | Vote Verified | Publicly Auditable
-```
+\`\`\`
 
 ### **Smart Contract Security Features**
 - **Reentrancy Protection** - Prevents manipulation attacks
@@ -207,7 +207,7 @@ Identity Hidden | Vote Verified | Publicly Auditable
 ## 🚀 Getting Started
 
 ### **For Developers**
-```bash
+\`\`\`bash
 # Clone the repository
 git clone https://github.com/Morfeo1997/v0-clear-vote.git
 
@@ -219,7 +219,7 @@ npm test
 
 # Deploy to testnet
 npm run deploy:amoy
-```
+\`\`\`
 
 ### **For Election Organizers**
 1. **Create Account** - Register on the platform

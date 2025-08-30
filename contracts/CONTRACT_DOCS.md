@@ -1,4 +1,4 @@
-````markdown
+\`\`\``markdown
 # 📋 VotingContract - Technical Documentation
 
 ## 📖 Overview
@@ -21,7 +21,7 @@
 ## 📊 Data Structures
 
 ### Election Struct
-```solidity
+\`\`\`solidity
 struct Election {
     uint256 id;           // Unique election ID
     string title;         // Election title
@@ -31,10 +31,10 @@ struct Election {
     address creator;      // Creator address
     bool exists;          // Existence flag
 }
-```
+\`\`\`
 
 ### Candidate Struct
-```solidity
+\`\`\`solidity
 struct Candidate {
     uint256 id;          // Unique candidate ID
     uint256 electionId;  // Election ID
@@ -43,7 +43,7 @@ struct Candidate {
     bool approved;       // Approval status
     bool exists;         // Existence flag
 }
-```
+\`\`\`
 
 ## 🔧 Core Functions
 
@@ -105,26 +105,26 @@ struct Candidate {
 ## 📡 Events
 
 ### `ElectionCreated`
-```solidity
+\`\`\`solidity
 event ElectionCreated(
     uint256 indexed electionId,
     string title,
     uint256 startTime,
     uint256 endTime
 );
-```
+\`\`\`
 
 ### `CandidateApproved` 
-```solidity
+\`\`\`solidity
 event CandidateApproved(
     uint256 indexed electionId,
     uint256 indexed candidateId,
     string candidateName
 );
-```
+\`\`\`
 
 ### `VoteCast`
-```solidity
+\`\`\`solidity
 event VoteCast(
     uint256 indexed electionId,
     uint256 indexed candidateId,
@@ -132,7 +132,7 @@ event VoteCast(
     string voteHash,
     uint256 totalVotesForCandidate
 );
-```
+\`\`\`
 
 ## 🔐 Security Features
 
@@ -181,11 +181,11 @@ event VoteCast(
    - Unique hash validation
 
 ### Test Results
-```
+\`\`\`
 ✅ 7 tests passing
 ⏱️ Average execution time: 559ms
 🛡️ All security validations tested
-```
+\`\`\`
 
 ## 📈 Deployment Stats
 
@@ -216,20 +216,20 @@ event VoteCast(
 ## 🚀 Deployment Instructions
 
 1. **Setup Environment**:
-   ```bash
+   \`\`\`bash
    cp .env.example .env
    # Configure ALCHEMY_RPC_URL and PRIVATE_KEY_OWNER
-   ```
+   \`\`\`
 
 2. **Deploy Contract**:
-   ```bash
+   \`\`\`bash
    npm run deploy:amoy
-   ```
+   \`\`\`
 
 3. **Verify Deployment**:
-   ```bash
+   \`\`\`bash
    npm run verify:amoy
-   ```
+   \`\`\`
 
 ## ⚠️ Important Notes
 
@@ -247,4 +247,4 @@ event VoteCast(
 
 **🎯 Status: Production Ready**  
 Contract audited, tested and ready for production deployment.
-````
+\`\`\``

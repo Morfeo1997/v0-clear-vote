@@ -14,14 +14,7 @@ export default function LandingSection() {
             El nuevo método en blockchain seguro para evitar fraudes gracias a la tecnología Blockchain
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3">
-              Comenzar Votación
-            </Button>
-            <Button variant="outline" size="lg" className="px-8 py-3 bg-transparent">
-              Conocer Más
-            </Button>
-          </div>
+
         </div>
 
         {/* Features Cards */}
