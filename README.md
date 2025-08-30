@@ -4,6 +4,7 @@
 
 [![Blockchain](https://img.shields.io/badge/Blockchain-Polygon-8247E5?style=for-the-badge&logo=polygon)](https://polygon.technology/)
 [![Smart Contract](https://img.shields.io/badge/Smart_Contract-Deployed-success?style=for-the-badge&logo=ethereum)](https://amoy.polygonscan.com/address/0x88Cf938baf924Fb0DA22f4d56679f6d00fa44E48)
+[![Smart Wallets](https://img.shields.io/badge/Smart_Wallets-Alchemy-FF6B35?style=for-the-badge&logo=ethereum)](https://www.alchemy.com/docs/wallets)
 [![Backend](https://img.shields.io/badge/Backend-Supabase-3ECF8E?style=for-the-badge&logo=supabase)](https://supabase.com/)
 [![Status](https://img.shields.io/badge/Status-Production_Ready-brightgreen?style=for-the-badge)]()
 
@@ -45,6 +46,13 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 - **Instant results** with real-time vote counting
 - **Mobile-friendly** design for maximum accessibility
 
+### 💳 **Smart Wallet Technology**
+- **Gas-free voting** - users don't pay transaction fees
+- **Seamless authentication** - login with existing credentials
+- **No crypto knowledge required** - wallets created automatically
+- **OIDC compliant** - enterprise-grade security standards
+- **Non-custodial** - users maintain full control of their votes
+
 ### 🌍 **Scalable & Cost-Effective**
 - Built on **Polygon** for low transaction costs (~$0.001 per vote)
 - **Edge computing** with Supabase for global performance
@@ -65,7 +73,7 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 \`\`\`
 
 ### **Backend Layer (Supabase)**
-\`\`\`
+```
 ⚡ Edge Functions (TypeScript/Deno)
 ├── User Authentication & Authorization
 ├── Election Creation & Management
@@ -73,7 +81,18 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 ├── Vote Submission & Verification
 ├── Results Aggregation & Display
 └── Blockchain Event Synchronization
-\`\`\`
+```
+
+### **Smart Wallet Layer (Alchemy Account Kit)**
+```
+💳 Authentication & Wallet Management
+├── OIDC-Compliant JWT Authentication
+├── RSA Key Pair Management (2048-bit)
+├── Automatic Wallet Creation
+├── Gas Sponsorship for Free Transactions
+├── Non-Custodial Security Model
+└── Seamless Web3 Integration
+```
 
 ### **Database Layer (PostgreSQL)**
 \`\`\`
@@ -122,6 +141,14 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 - **Alchemy Smart Wallets** - User-friendly wallet management
 - **RSA Cryptography** - Additional security layers
 
+### **Smart Wallet Technology**
+- **Alchemy Account Kit** - Enterprise-grade wallet infrastructure
+- **OIDC Compliance** - OpenID Connect authentication standards
+- **"Bring Your Own Auth"** - Custom authentication integration
+- **Gas Sponsorship** - Free transactions for users
+- **Non-Custodial** - Users maintain full control
+- **JWT with RS256** - Secure token-based authentication
+
 ---
 
 ## 🎮 Live Demo & Proof of Concept
@@ -165,6 +192,14 @@ Clear Vote leverages blockchain technology to create a **transparent**, **secure
 - **Resource Savings** - No paper, no physical locations
 - **Scalability** - Handles millions of voters seamlessly
 
+### **Smart Wallet Benefits**
+- **Zero Friction Onboarding** - No crypto knowledge required
+- **Gas-Free Experience** - Users never pay transaction fees
+- **Enterprise Security** - Bank-grade authentication standards
+- **Universal Access** - Login with existing credentials
+- **Non-Custodial Control** - Users own their voting records
+- **Instant Transactions** - No wallet setup delays
+
 ---
 
 ## 🔬 Technical Innovation Highlights
@@ -207,19 +242,29 @@ Identity Hidden | Vote Verified | Publicly Auditable
 ## 🚀 Getting Started
 
 ### **For Developers**
-\`\`\`bash
+```bash
 # Clone the repository
 git clone https://github.com/Morfeo1997/v0-clear-vote.git
 
 # Install dependencies
 npm install
 
+# Set up Smart Wallet authentication
+./scripts/setup-smart-wallet.sh
+
 # Run tests
 npm test
 
 # Deploy to testnet
 npm run deploy:amoy
-\`\`\`
+```
+
+### **Smart Wallet Setup**
+1. **Get Alchemy API Key** - Create account at [Alchemy Dashboard](https://dashboard.alchemy.com)
+2. **Configure Environment** - Update `.env.local` with your credentials
+3. **Set up OIDC** - Configure "Bring Your Own Auth" in Alchemy
+4. **Test Authentication** - Run `./scripts/test-smart-wallet-auth.sh`
+5. **Deploy & Integrate** - Smart wallets ready for gas-free voting
 
 ### **For Election Organizers**
 1. **Create Account** - Register on the platform
@@ -233,8 +278,9 @@ npm run deploy:amoy
 ## 📚 Documentation
 
 - 📖 **[Smart Contract Documentation](./contracts/CONTRACT_DOCS.md)** - Detailed smart contract specifications
-- � **[Smart Contracts Overview](./contracts/README.md)** - Contract deployment and testing info
+- 🔧 **[Smart Contracts Overview](./contracts/README.md)** - Contract deployment and testing info
 - ⚡ **[Edge Functions Guide](./supabase/functions/README.md)** - Backend API and serverless functions
+- 💳 **[Smart Wallet Documentation](./SMART_WALLET_DOCS.md)** - Complete Smart Wallet implementation guide
 - 🚀 **[Getting Started](#-getting-started)** - Quick setup and deployment guide
 
 ---
