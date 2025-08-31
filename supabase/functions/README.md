@@ -87,4 +87,4 @@ Each function includes:
 
 ## 📖 API Documentation
 
-For detailed API specifications and integration examples, see the main project [README.md](../../README.md).
+For detailed API specifications and integration examples, see the main project [README.md](../README.md).
